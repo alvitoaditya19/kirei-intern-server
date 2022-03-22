@@ -4,7 +4,7 @@ const { lampu, updateLampu } = require("./controller");
 const multer = require("multer");
 const os = require("os");
 
-router.post("/lampu",multer({ dest: os.tmpdir() }).single("image"), lampu);
+router.get("/lampu", lampu);
 router.put("/lampu/update",multer({ dest: os.tmpdir() }).single("image"), updateLampu);
 
 module.exports = router;
