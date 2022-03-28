@@ -7,6 +7,13 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const flash = require("connect-flash");
 var cors = require('cors')
+
+
+// const dashboardRouter = require("./app/dashboard/router");
+const userRouter = require("./app/user/router");
+const dashboardRouter = require("./app/dashboard/router");
+
+
  
 const playerRouter = require("./app/user/router");
 const authRouter = require("./app/auth/router");
@@ -44,7 +51,15 @@ app.use(
   "/adminlte",
   express.static(path.join(__dirname, "/node_modules/admin-lte/"))
 );
+app.use('/sb-admin-2', express.static(path.join(__dirname, 'node_modules/startbootstrap-sb-admin-2')));
 
+
+app.use("/", userRouter);
+app.use("/dashboard", dashboardRouter);
+app.use("/lampu", lampuRouter);
+
+
+// app.use("/dashboard", dashboardRouter);
 
 // API
 app.use(`${URL}/players`, playerRouter);

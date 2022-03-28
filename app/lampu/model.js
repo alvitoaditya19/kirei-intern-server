@@ -4,13 +4,18 @@ const mongoose = require("mongoose");
 const lampuSchema = mongoose.Schema({
   lampu1: {
     type: String,
-    require: [true, "Lampu 1 Harus Diisi"],
-    default: "ON"
+    enum: ["ON", "OFF"],
+    default: "ON",
   },
   lampu2: {
     type: String,
-    require: [true, "Lampu 2 Harus Diisi"],
-    default: "ON"
+    enum: ["ON", "OFF"],
+    default: "ON",
+  },
+  status: {
+    type: String,
+    enum: ["Y", "N"],
+    default: "Y",
   },
 },{ timestamps: true });
 

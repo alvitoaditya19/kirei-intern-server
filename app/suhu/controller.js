@@ -1,6 +1,51 @@
 const Suhu = require("./model");
 
 module.exports = {
+  index: async (req, res) => {
+    try {
+      const alertMessage = req.flash("alertMessage");
+      const alertStatus = req.flash("alertStatus");
+
+      const alert = { message: alertMessage, status: alertStatus };
+      const suhu = await Suhu.find();
+
+      console.log("suhu ==>");
+      console.log(suhu);
+
+      res.render("admin/suhu/view_suhu", {
+        suhu,
+        alert,
+        name: req.session.user.name,
+        title: "Halaman Suhu",
+      });
+    } catch (err) {
+      req.flash("alertMessage", `${err.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/suhu");
+    }
+  },
+  
+  actionStatus: async (req,res)=>{
+    try {
+      const { id } = req.params
+      let voucher = await Voucher.findOne({_id:id})
+      let status = voucher.status === 'Y' ? 'N' : 'Y'
+
+      voucher = await Voucher.findOneAndUpdate({
+        _id:id
+      },{status})
+
+        req.flash("alertMessage", "Berhasil Ubah Status");
+        req.flash("alertStatus", "success");
+
+        res.redirect("/voucher");
+
+    } catch (error) {
+        req.flash("alertMessage", `${err.message}`);
+        req.flash("alertStatus", "danger");
+        res.redirect("/vocuher");
+    }
+    },
   suhu: async (req, res, next) => {
     try {
       const { celcius, fahreinhet } = req.body;
