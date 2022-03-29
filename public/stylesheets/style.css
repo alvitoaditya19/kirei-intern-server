@@ -8,5 +8,37 @@ body {
 }
 
 .button-click-1{
-  background-color: #00B7FF;
+  background-color: #097EEB;
+}
+
+.btn-lamp-on{
+  height: 150px;
+  width:150px;
+  background-color: #097EEB !important;
+  border-radius: 20px;
+  padding: 10px;
+
+}
+
+.btn-lamp-on h1{
+  font-weight: 500;
+  font-size: 18px;
+  color: #ffff !important;
+}
+
+.btn-lamp-off{
+  height: 150px;
+  width:150px;
+  background-color: #fff !important;
+  color: #097EEB !important;
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.btn-lamp-off h1{
+  font-weight: 500;
+  font-size: 18px;
+  color: #097EEB !important;
 }

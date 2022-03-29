@@ -1,7 +1,7 @@
 const KelembapanTanah = require("./model");
 
 module.exports = {
-  tanah: async (req, res, next) => {
+  index: async (req, res, next) => {
     try {
       const { kelembapanTanah } = req.body;
 

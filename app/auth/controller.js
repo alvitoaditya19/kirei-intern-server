@@ -1,4 +1,4 @@
-const Player = require('../user/model');
+const Player = require('../admin/model');
 const path = require("path");
 const fs = require("fs");
 const config = require("../../config");

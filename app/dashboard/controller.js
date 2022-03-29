@@ -1,4 +1,9 @@
 const Lampu = require("../lampu/model");
+const Pump = require("../pump/model");
+const Tanah = require("../tanah/model");
+
+
+
 const Suhu = require("../suhu/model");
 
 
@@ -7,12 +12,18 @@ module.exports = {
     try {      
       const lampu = await Lampu.findOne()
       const suhu = await Suhu.findOne()
+      const pump = await Pump.findOne()
+      const tanah = await Tanah.findOne()
+
+
 
       res.render("admin/dashboard/view_dashboard",{
-        name : req.session.user.name,
+        name : req.session.admin.name,
         title: "Halaman Dashboard",
         lampu,
-        suhu
+        pump,
+        suhu,
+        tanah
       });
     } catch (err) {
       console.log(err);
@@ -54,6 +65,52 @@ module.exports = {
           _id: id,
         },
         { lampu2 }
+      );
+
+      req.flash("alertMessage", "Berhasil Ubah Status");
+      req.flash("alertStatus", "success");
+
+      res.redirect("/dashboard");
+    } catch (error) {
+      req.flash("alertMessage", `${err.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/dashboard");
+    }
+  },
+  actionStatusPump1: async (req, res) => {
+    try {
+      const { id } = req.params;
+      let pump = await Pump.findOne({ _id: id });
+      let pump1 = pump.pump1 === "ON" ? "OFF" : "ON";
+
+      pump = await Pump.findOneAndUpdate(
+        {
+          _id: id,
+        },
+        { pump1 }
+      );
+
+      req.flash("alertMessage", "Berhasil Ubah Status");
+      req.flash("alertStatus", "success");
+
+      res.redirect("/dashboard");
+    } catch (error) {
+      req.flash("alertMessage", `${err.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/dashboard");
+    }
+  },
+  actionStatusPump2: async (req, res) => {
+    try {
+      const { id } = req.params;
+      let pump = await Pump.findOne({ _id: id });
+      let pump2 = pump.pump2 === "ON" ? "OFF" : "ON";
+
+      pump = await Pump.findOneAndUpdate(
+        {
+          _id: id,
+        },
+        { pump2 }
       );
 
       req.flash("alertMessage", "Berhasil Ubah Status");

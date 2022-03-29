@@ -2,11 +2,11 @@ const config = require("../../config");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const Player = require('../user/model');
+const Player = require('../admin/model');
 
 module.exports = {
   isLoginAdmin: (req, res, next) => {
-    if (req.session.user === null || req.session.user === undefined) {
+    if (req.session.admin === null || req.session.admin === undefined) {
       req.flash(
         "alertMessage",
         `Mohon maaf session anda telah habis silahkan join kembali`

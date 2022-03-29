@@ -10,17 +10,21 @@ var cors = require('cors')
 
 
 // const dashboardRouter = require("./app/dashboard/router");
-const userRouter = require("./app/user/router");
+const adminRouter = require("./app/admin/router");
 const dashboardRouter = require("./app/dashboard/router");
+const userRouter = require("./app/user/router");
+
 
 
  
-const playerRouter = require("./app/user/router");
+const playerRouter = require("./app/admin/router");
 const authRouter = require("./app/auth/router");
 const suhuRouter = require("./app/suhu/router");
 const lampuRouter = require("./app/lampu/router");
 const tanahRouter = require("./app/tanah/router");
 const cuacaRouter = require("./app/weather/router");
+const pumpRouter = require("./app/pump/router");
+
 
 
 const app = express();
@@ -54,9 +58,11 @@ app.use(
 app.use('/sb-admin-2', express.static(path.join(__dirname, 'node_modules/startbootstrap-sb-admin-2/')));
 
 
-app.use("/", userRouter);
+app.use("/", adminRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/lampu", lampuRouter);
+app.use("/user", userRouter);
+
 
 
 // app.use("/dashboard", dashboardRouter);
@@ -68,6 +74,8 @@ app.use(`${URL}/kirei`, suhuRouter);
 app.use(`${URL}/lampu`, lampuRouter);
 app.use(`${URL}/tanah`, tanahRouter);
 app.use(`${URL}/cuaca`, cuacaRouter);
+app.use(`${URL}/pump`, pumpRouter);
+
 
 
 
