@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-let categorySchema = mongoose.Schema({
+let userSchema = mongoose.Schema({
   name: {
     type: String,
     require: [true, "Nama Kategori Harus Diisi"],
@@ -19,4 +19,4 @@ let categorySchema = mongoose.Schema({
   },
 },{ timestamps: true });
 
-module.exports = mongoose.model("User", categorySchema);
+module.exports = mongoose.model("User", userSchema);

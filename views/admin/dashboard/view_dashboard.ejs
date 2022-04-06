@@ -16,6 +16,7 @@
 
       <!-- Begin Page Content -->
       <div class="container-fluid">
+        <%- include ../../partials/message.ejs %>
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">Welcome to Dashboard</h1>
         <!-- Earnings (Monthly) Card Example -->
@@ -108,6 +109,43 @@
             </div>
           </div>
         </div>
+        <div>
+          <h1 id="name"></h1>
+        </div>
+        <div>
+          <h1 id="demo"></h1>
+        </div>
+        <div>
+          <h1 id="lampuu"></h1>
+        </div>
+        <div>
+          <h1 id="timeSerial"></h1>
+        </div>
+        <p id="location"></p>
+        <div class="col-lg-12">
+          <form
+            action="/dashboard/onOfManual/62452a1b53bd72eb5a176274?_method=PUT"
+            style="display: inline-block"
+            method="POST"
+            >
+              <% if(onOfManual.statusKontrol === 'OFF') { %>
+                <div class="col-lg-3">
+                  <button class="btn-lamp-off btn btn-default noHover">
+                    <img src="/images/icon-lamp2.svg" alt="" height="60" width="60" class="mb-2">
+        
+                    <h1 class="title">Pump 1 ON</h1>
+                  </button>
+                </div>
+              <% } else if(onOfManual.statusKontrol === 'ON') { %>
+                <div class="col-lg-3">
+                  <button class="btn-lamp-on btn-default noHover">
+                    <img src="/images/icon-lamp1.svg" alt="" height="60" width="60" class="mb-2">
+                    <h1 class="title">Pump 1 OFF</h1>
+                  </button>
+                </div>
+              <% } %>
+            </form>  
+        </div>
         <div class="col-lg-5 col-12 col-md-10">
           <div class="row">
             <form
@@ -164,14 +202,14 @@
                   <button class="btn-lamp-off btn btn-default noHover">
                     <img src="/images/icon-lamp2.svg" alt="" height="60" width="60" class="mb-2">
         
-                    <h1 class="title">Pump 1 ON</h1>
+                    <h1 class="title">Pump 1 OFF</h1>
                   </button>
                 </div>
               <% } else if(pump.pump1 === 'ON') { %>
                 <div class="col-lg-3">
                   <button class="btn-lamp-on btn-default noHover">
                     <img src="/images/icon-lamp1.svg" alt="" height="60" width="60" class="mb-2">
-                    <h1 class="title">Pump 1 OFF</h1>
+                    <h1 class="title">Pump 1 ON</h1>
                   </button>
                 </div>
               <% } %>
@@ -185,14 +223,14 @@
               <div class="col-lg-3">
                 <button class="btn-lamp-off btn btn-default noHover">
                   <img src="/images/icon-lamp2.svg" alt="" height="60" width="60" class="mb-2">
-                  <h1 class="title">Pump 2 ON</h1>
+                  <h1 class="title">Pump 2 OFF</h1>
                 </button>
               </div>
             <% } else if(pump.pump2 === 'ON') { %>
               <div class="col-lg-3">
                 <button class="btn-lamp-on btn-default noHover">
                   <img src="/images/icon-lamp1.svg" alt="" height="60" width="60" class="mb-2">
-                  <h1 class="title">Pump 2 OFF</h1>
+                  <h1 class="title">Pump 2 ON</h1>
                 </button>
               </div>
             <% } %>

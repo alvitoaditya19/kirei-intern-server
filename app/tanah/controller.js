@@ -18,6 +18,15 @@ module.exports = {
       res.status(500).json({message: err.message || `Internal Server Error`});
     }
   },
+  getData: async(req, res)=>{
+    try {
+      const tanah = await KelembapanTanah.find();
+
+        res.status(200).json({data: tanah});
+    } catch (err) {
+      res.status(500).json({message: err.message || `Internal Server Error`})
+    }
+  },
   updateTanah: async (req, res, next) => {
     try {
       const { kelembapanTanah = "" } = req.body

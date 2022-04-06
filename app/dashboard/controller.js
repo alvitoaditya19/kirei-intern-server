@@ -1,6 +1,8 @@
 const Lampu = require("../lampu/model");
 const Pump = require("../pump/model");
 const Tanah = require("../tanah/model");
+const OnOfManual = require("../onOfManual/model");
+
 
 
 
@@ -14,8 +16,13 @@ module.exports = {
       const suhu = await Suhu.findOne()
       const pump = await Pump.findOne()
       const tanah = await Tanah.findOne()
+      const onOfManual = await OnOfManual.findOne()
 
 
+      const alertMessage = req.flash("alertMessage");
+      const alertStatus = req.flash("alertStatus");
+
+      const alert = { message: alertMessage, status: alertStatus };
 
       res.render("admin/dashboard/view_dashboard",{
         name : req.session.admin.name,
@@ -23,7 +30,9 @@ module.exports = {
         lampu,
         pump,
         suhu,
-        tanah
+        tanah,
+        onOfManual,
+        alert
       });
     } catch (err) {
       console.log(err);
@@ -122,6 +131,30 @@ module.exports = {
       req.flash("alertStatus", "danger");
       res.redirect("/dashboard");
     }
-  },
 
-};
+    },
+    
+  actionStatusControl: async (req, res) => {
+    try {
+      const { id } = req.params;
+      let onOfManual = await OnOfManual.findOne({ _id: id });
+      let statusKontrol = onOfManual.statusKontrol === "ON" ? "OFF" : "ON";
+
+      statusKontrol = await OnOfManual.findOneAndUpdate(
+        {
+          _id: id,
+        },
+        { statusKontrol }
+      );
+
+      req.flash("alertMessage", "Berhasil Ubah Status");
+      req.flash("alertStatus", "success");
+
+      res.redirect("/dashboard");
+    } catch (error) {
+      req.flash("alertMessage", `${err.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/dashboard");
+    }
+  },
+  };

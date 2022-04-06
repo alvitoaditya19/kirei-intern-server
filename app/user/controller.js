@@ -23,9 +23,12 @@ module.exports = {
   },
   viewCreate: async (req, res) => {
     try {
+      const user = await User.find();
+
       res.render("admin/user/create", {
+        user,
         name: req.session.admin.name,
-        title: "Halaman Tambah Bank",
+        title: "Halaman Tambah User",
       });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
@@ -38,17 +41,17 @@ module.exports = {
     try {
       const { name, email, username, password } = req.body;
 
-      let category = await Category({ name });
-      await category.save();
+      let user = await User({ name, email, username, password });
+      await user.save();
 
-      req.flash("alertMessage", "Berhasil Tambah Kategori");
+      req.flash("alertMessage", "Berhasil Tambah User");
       req.flash("alertStatus", "success");
 
-      res.redirect("/category");
+      res.redirect("/user");
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
       req.flash("alertStatus", "danger");
-      res.redirect("/category");
+      res.redirect("/user");
     }
   },
 
@@ -56,59 +59,58 @@ module.exports = {
     try {
       const { id } = req.params;
 
-      const category = await Category.findOne({ _id: id });
-      console.log(category);
+      const user = await User.findOne({ _id: id });
 
-      res.render("admin/category/edit", {
-        category,
-        name: req.session.user.name,
-        title: "Halaman Ubah Bank",
+      res.render("admin/user/edit", {
+        user,
+        name: req.session.admin.name,
+        title: "Halaman Ubah User",
       });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
       req.flash("alertStatus", "danger");
-      res.redirect("/category");
+      res.redirect("/user");
     }
   },
 
   actionEdit: async (req, res) => {
     try {
       const { id } = req.params;
-      const { name } = req.body;
+      const { name, email, username, password } = req.body;
 
-      await Category.findOneAndUpdate(
+      await User.findOneAndUpdate(
         {
           _id: id,
         },
-        { name }
+        { name, email, username, password }
       );
 
-      req.flash("alertMessage", "Berhasil Ubah Kategori");
+      req.flash("alertMessage", "Berhasil Ubah User");
       req.flash("alertStatus", "success");
 
-      res.redirect("/category");
+      res.redirect("/user");
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
       req.flash("alertStatus", "danger");
-      res.redirect("/category");
+      res.redirect("/user");
     }
   },
 
   actionDelete: async (req, res) => {
     try {
       const { id } = req.params;
-      await Category.findOneAndRemove({
+      await User.findOneAndRemove({
         _id: id,
       });
 
-      req.flash("alertMessage", "Berhasil Hapus Kategori");
+      req.flash("alertMessage", "Berhasil Hapus User");
       req.flash("alertStatus", "success");
 
-      res.redirect("/category");
+      res.redirect("/user");
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
       req.flash("alertStatus", "danger");
-      res.redirect("/category");
+      res.redirect("/user");
     }
   },
 };
