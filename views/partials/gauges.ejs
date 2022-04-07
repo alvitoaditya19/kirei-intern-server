@@ -10,7 +10,7 @@
       headers: {
         "Content-Type": "application/json",
       },
-      url: "kirei-iot-server.herokuapp.com/api/v1/lampu/lampu",
+      url: "https://kirei-iot-server.herokuapp.com/api/v1/lampu/lampu",
       success: function (data) {
         $("#lampu1").text(data.data[0].lampu1);
         $("#lampu2").text(data.data[0].lampu2);
@@ -24,7 +24,7 @@
       headers: {
         "Content-Type": "application/json",
       },
-      url: "kirei-iot-server.herokuapp.com/api/v1/kirei/suhu",
+      url: "https://kirei-iot-server.herokuapp.com/api/v1/kirei/suhu",
       success: function (data) {
         $("#suhuCelcius").text(data.data[0].celcius);
         $("#humidity").text(data.data[0].humidity);
@@ -38,7 +38,7 @@
       headers: {
         "Content-Type": "application/json",
       },
-      url: "kirei-iot-server.herokuapp.com/api/v1/tanah",
+      url: "https://kirei-iot-server.herokuapp.com/api/v1/tanah",
       success: function (data) {
         $("#tanah").text(data.data[0].kelembapanTanah);
       },
@@ -51,7 +51,7 @@
       headers: {
         "Content-Type": "application/json",
       },
-      url: "kirei-iot-server.herokuapp.com/api/v1/water",
+      url: "https://kirei-iot-server.herokuapp.com/api/v1/water",
       success: function (data) {
         $("#waterlevel").text(data.data[0].waterlevel);
       },
