@@ -2,12 +2,8 @@ const Lampu = require("../lampu/model");
 const Pump = require("../pump/model");
 const Tanah = require("../tanah/model");
 const OnOfManual = require("../onOfManual/model");
-
-
-
-
 const Suhu = require("../suhu/model");
-
+const WaterLevel = require("../water/model");
 
 module.exports = {
   index: async (req, res) => {
@@ -16,7 +12,8 @@ module.exports = {
       const suhu = await Suhu.findOne()
       const pump = await Pump.findOne()
       const tanah = await Tanah.findOne()
-      const onOfManual = await OnOfManual.findOne()
+      const onOfManual = await OnOfManual.findOne()  
+      const waterlevel = await WaterLevel.findOne()
 
 
       const alertMessage = req.flash("alertMessage");
@@ -32,6 +29,7 @@ module.exports = {
         suhu,
         tanah,
         onOfManual,
+        waterlevel,
         alert
       });
     } catch (err) {

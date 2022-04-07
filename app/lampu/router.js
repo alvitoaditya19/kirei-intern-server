@@ -4,10 +4,9 @@ const {lampu,index, updateLampu, actionStatusLampu2, actionStatusLampu1, actionC
 const multer = require("multer");
 const os = require("os");
 
-router.get("/", index);
-router.get("/lampu", lampu);
+router.get("/", lampu);
 
-router.put("/lampu/update",multer({ dest: os.tmpdir() }).single("image"), updateLampu);
+router.put("/",multer({ dest: os.tmpdir() }).single("image"), updateLampu);
 router.put("/lampu1/:id", actionStatusLampu1);
 router.put("/lampu2/:id", actionStatusLampu2);
 router.post("/post",  multer({ dest: os.tmpdir() }).single("image"), actionCreate);

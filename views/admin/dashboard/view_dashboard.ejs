@@ -110,19 +110,12 @@
           </div>
         </div>
         <div>
-          <h1 id="name"></h1>
+          <h1 id="lampu1"></h1>
         </div>
         <div>
-          <h1 id="demo"></h1>
+          <h1 id="lampu2"></h1>
         </div>
-        <div>
-          <h1 id="lampuu"></h1>
-        </div>
-        <div>
-          <h1 id="timeSerial"></h1>
-        </div>
-        <p id="location"></p>
-        <div class="col-lg-12">
+        <div class="col-lg-12 mb-lg-4 justify-content-start">
           <form
             action="/dashboard/onOfManual/62452a1b53bd72eb5a176274?_method=PUT"
             style="display: inline-block"
@@ -133,14 +126,14 @@
                   <button class="btn-lamp-off btn btn-default noHover">
                     <img src="/images/icon-lamp2.svg" alt="" height="60" width="60" class="mb-2">
         
-                    <h1 class="title">Pump 1 ON</h1>
+                    <h1 class="title">OTOMATIS OFF</h1>
                   </button>
                 </div>
               <% } else if(onOfManual.statusKontrol === 'ON') { %>
                 <div class="col-lg-3">
                   <button class="btn-lamp-on btn-default noHover">
                     <img src="/images/icon-lamp1.svg" alt="" height="60" width="60" class="mb-2">
-                    <h1 class="title">Pump 1 OFF</h1>
+                    <h1 class="title">OTOMATIS ON</h1>
                   </button>
                 </div>
               <% } %>
@@ -214,40 +207,44 @@
                 </div>
               <% } %>
             </form>  
-          <form
-            action="/dashboard/pump2/62430c4028e1eef562010284?_method=PUT"
-            style="display: inline-block"
-            method="POST"
-          >
-            <% if(pump.pump2 === 'OFF') { %>
-              <div class="col-lg-3">
-                <button class="btn-lamp-off btn btn-default noHover">
-                  <img src="/images/icon-lamp2.svg" alt="" height="60" width="60" class="mb-2">
-                  <h1 class="title">Pump 2 OFF</h1>
-                </button>
-              </div>
-            <% } else if(pump.pump2 === 'ON') { %>
-              <div class="col-lg-3">
-                <button class="btn-lamp-on btn-default noHover">
-                  <img src="/images/icon-lamp1.svg" alt="" height="60" width="60" class="mb-2">
-                  <h1 class="title">Pump 2 ON</h1>
-                </button>
-              </div>
-            <% } %>
-          </form> 
+            <form
+              action="/dashboard/pump2/62430c4028e1eef562010284?_method=PUT"
+              style="display: inline-block"
+              method="POST"
+            >
+              <% if(pump.pump2 === 'OFF') { %>
+                <div class="col-lg-3">
+                  <button class="btn-lamp-off btn btn-default noHover">
+                    <img src="/images/icon-lamp2.svg" alt="" height="60" width="60" class="mb-2">
+                    <h1 class="title">Pump 2 OFF</h1>
+                  </button>
+                </div>
+              <% } else if(pump.pump2 === 'ON') { %>
+                <div class="col-lg-3">
+                  <button class="btn-lamp-on btn-default noHover">
+                    <img src="/images/icon-lamp1.svg" alt="" height="60" width="60" class="mb-2">
+                    <h1 class="title">Pump 2 ON</h1>
+                  </button>
+                </div>
+              <% } %>
+            </form> 
           </div>
         </div>
         <div>
           <h1>Suhu Celcius</h1>
-          <h1 class="text-bold"><%= suhu.celcius %></h1>
+          <h1 id="suhuCelcius"></h1>
         </div>
         <div>
-          <h1>Suhu Celcius</h1>
-          <h1 class="text-bold"><%= suhu.fahreinhet %></h1>
+          <h1>Humidity</h1>
+          <h1 id="humidity"></h1>
         </div>
         <div>
           <h1>Kelembapan Tanah</h1>
-          <h1 class="text-bold"><%= tanah.kelembapanTanah %></h1>
+          <h1 class="text-bold" id="tanah"></h1>
+        </div>
+        <div>
+          <h1>Water Level</h1>
+          <h1 class="text-bold" id="waterlevel"></h1>
         </div>
         <div id="myDiv">
           <!-- Plotly chart will be drawn inside this DIV -->

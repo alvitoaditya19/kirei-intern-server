@@ -1,11 +1,11 @@
 var express = require("express");
 var router = express.Router();
-const { actionCreate, actionStatusControl } = require("./controller");
+const { actionCreate, getData } = require("./controller");
 const multer = require("multer");
 const os = require("os");
 
-router.post("/post", actionCreate);
-router.put("/update", actionStatusControl);
+router.get("/", getData);
+router.post("/", actionCreate);
 
 module.exports = router;
  

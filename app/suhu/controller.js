@@ -24,29 +24,16 @@ module.exports = {
       res.redirect("/suhu");
     }
   },
-  
-  actionStatus: async (req,res)=>{
+    
+  getSuhu: async (req, res, next) => {
     try {
-      const { id } = req.params
-      let voucher = await Voucher.findOne({_id:id})
-      let status = voucher.status === 'Y' ? 'N' : 'Y'
-
-      voucher = await Voucher.findOneAndUpdate({
-        _id:id
-      },{status})
-
-        req.flash("alertMessage", "Berhasil Ubah Status");
-        req.flash("alertStatus", "success");
-
-        res.redirect("/voucher");
-
-    } catch (error) {
-        req.flash("alertMessage", `${err.message}`);
-        req.flash("alertStatus", "danger");
-        res.redirect("/vocuher");
+      const suhu = await Suhu.find();
+      res.status(200).json({ data: suhu });
+    } catch (err) {
+      res.status(500).json({ message: err.message || `Internal Server Error` });
     }
-    },
-  suhu: async (req, res, next) => {
+  },
+  postSuhu: async (req, res, next) => {
     try {
       const { celcius, fahreinhet } = req.body;
 
@@ -62,32 +49,36 @@ module.exports = {
 
       res.status(200).json({ data: suhu });
     } catch (err) {
-      res.status(500).json({message: err.message || `Internal Server Error`});
+      res.status(500).json({ message: err.message || `Internal Server Error` });
     }
   },
   updateSuhu: async (req, res, next) => {
     try {
-      const { id } = req.params
-      const { celcius = "", fahreinhet = "" } = req.body
+      const { id } = req.params;
+      const { celcius = "", humidity = "" } = req.body;
 
-      const payload = {}
+      const payload = {};
 
-      if (celcius.length) payload.celcius = celcius
-      if (fahreinhet.length) payload.fahreinhet = fahreinhet
+      if (celcius.length) payload.celcius = celcius;
+      if (humidity.length) payload.fahreinhet = humidity;
 
-      const suhu = await Suhu.findOneAndUpdate({
-        _id: id
-      }, payload, { new: true, runValidators: true })
+      const suhu = await Suhu.findOneAndUpdate(
+        {
+          _id: "6237c861f31ee9b6d302f2f9",
+        },
+        payload,
+        { new: true, runValidators: true }
+      );
 
       res.status(201).json({
         data: {
           id: suhu.id,
           celcius: suhu.celcius,
-          fahreinhet: suhu.fahreinhet,
-        }
-      })
+          humidity: suhu.humidity,
+        },
+      });
     } catch (err) {
-      res.status(500).json({message: err.message || `Internal Server Error`});
+      res.status(500).json({ message: err.message || `Internal Server Error` });
     }
   },
 };

@@ -1,29 +1,60 @@
 <script>
-    setInterval(getData,1000)
+  setInterval(getDataLampu, 1000);
+  setInterval(getDataSuhu, 1000);
+  setInterval(getDataKelembapanTanah, 1000);
+  setInterval(getwaterlevel, 1000);
 
-
-function getData(){
+  function getDataLampu() {
     $.ajax({
-        type: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        url: "http://localhost:4000/api/v1/lampu/lampu",
-        success: function (data) {
-            $("#avatar").attr("src", data.avatar_url);
-        
-            $("#lampuu").text(data.data[0].lampu1);
-            const date = new Date();
-              document.getElementById("timeSerial").innerHTML = date.toLocaleTimeString();
-        }
+      type: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:4000/api/v1/lampu/lampu",
+      success: function (data) {
+        $("#lampu1").text(data.data[0].lampu1);
+        $("#lampu2").text(data.data[0].lampu2);
+      },
     });
-}
+  }
 
+  function getDataSuhu() {
+    $.ajax({
+      type: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:4000/api/v1/kirei/suhu",
+      success: function (data) {
+        $("#suhuCelcius").text(data.data[0].celcius);
+        $("#humidity").text(data.data[0].humidity);
+      },
+    });
+  }
 
-setInterval(myTimer, 1000);
+  function getDataKelembapanTanah() {
+    $.ajax({
+      type: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:4000/api/v1/tanah",
+      success: function (data) {
+        $("#tanah").text(data.data[0].kelembapanTanah);
+      },
+    });
+  }
 
-function myTimer() {
-  const date = new Date();
-  document.getElementById("demo").innerHTML = date.toLocaleTimeString();
-}
+  function getwaterlevel() {
+    $.ajax({
+      type: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: "http://localhost:4000/api/v1/water",
+      success: function (data) {
+        $("#waterlevel").text(data.data[0].waterlevel);
+      },
+    });
+  }
 </script>

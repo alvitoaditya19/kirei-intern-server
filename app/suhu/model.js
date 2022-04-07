@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 let suhuSchema = mongoose.Schema({
-  fahreinhet: {
+  humidity: {
     type: String,
-    require: [true, "Suhu Fahreinhet Harus Diisi"],
+    require: [true, "Suhu Humidity Harus Diisi"],
     
   },
   celcius: {

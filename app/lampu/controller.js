@@ -1,25 +1,6 @@
 const Lampu = require("./model");
 
 module.exports = {
-  index: async (req, res) => {
-    try {
-      const alertMessage = req.flash("alertMessage");
-      const alertStatus = req.flash("alertStatus");
-
-      const alert = { message: alertMessage, status: alertStatus };
-      const lampu = await Lampu.findOne();
-      res.render("admin/lampu/view_lampu", {
-        title: "Halaman Lampu",
-        lampu,
-        alert
-
-      });
-    } catch (err) {
-       req.flash("alertMessage", `${err.message}`);
-      req.flash("alertStatus", "danger");
-      res.redirect("/lampu");
-    }
-  },
   actionCreate: async (req, res, next) => {
     try {
       const { lampu1, lampu2 } = req.body;
