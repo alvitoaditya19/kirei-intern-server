@@ -3,6 +3,8 @@
   setInterval(getDataSuhu, 1000);
   setInterval(getDataKelembapanTanah, 1000);
   setInterval(getwaterlevel, 1000);
+  setInterval(getkeruhAir, 1000);
+
 
   function getDataLampu() {
     $.ajax({
@@ -54,6 +56,20 @@
       url: "https://kirei-iot-server.herokuapp.com/api/v1/water",
       success: function (data) {
         $("#waterlevel").text(data.data[0].waterlevel);
+      },
+    });
+  }
+
+  function getkeruhAir() {
+    $.ajax({
+      type: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      url: "https://kirei-iot-server.herokuapp.com/api/v1/keruhair",
+      success: function (dataaa) {
+        $("#kekeruhanAir").text(dataaa.data.slice(-1)[0].kekeruhanAir);
+        console.log(dataaa.data[-1].kekeruhanAir);
       },
     });
   }

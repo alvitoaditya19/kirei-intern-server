@@ -25,7 +25,7 @@ const tanahRouter = require("./app/tanah/router");
 const cuacaRouter = require("./app/weather/router");
 const pumpRouter = require("./app/pump/router");
 const waterRouter = require("./app/water/router");
-
+const keruhRouter = require("./app/keruhair/router");
 const onOfControlRouter = require("./app/onOfManual/router");
 
 
@@ -82,7 +82,7 @@ app.use(`${URL}/tanah`, tanahRouter);
 app.use(`${URL}/cuaca`, cuacaRouter);
 app.use(`${URL}/pump`, pumpRouter);
 app.use(`${URL}/water`, waterRouter);
-
+app.use(`${URL}/keruhair`, keruhRouter);
 app.use(`${URL}/onOfManual`, onOfControlRouter);
 // Akhir API
 
