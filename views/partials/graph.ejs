@@ -1,0 +1,69 @@
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+  crossorigin="anonymous"
+></script>
+<script>
+  var xmlhttp = new XMLHttpRequest();
+  var url = "https://kirei-iot-server.herokuapp.com/api/v1/suhu";
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var data = JSON.parse(this.responseText);
+
+      var celcius = data.data.map(function (elem) {
+          return elem.celcius;
+      });
+
+      var fahreinhet = data.data.map(function (elem) {
+        return elem.fahreinhet;
+      });
+
+      var timeCelcius = data.data.map(function (elem) {
+        let newDate = new Date(elem.updatedAt);
+          return newDate.toDateString();
+      });
+      console.log(celcius);
+      console.log(timeCelcius);
+      console.log(fahreinhet);
+
+
+      const ctx = document.getElementById("canvas").getContext("2d");
+      const myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: timeCelcius,
+          datasets: [
+            {
+              label: "High Temperature F",
+              data: celcius,
+              backgroundColor: "transparent",
+              borderColor: "red",
+              borderWidth: 4,
+            },
+            {
+              label: "Low Temperature F",
+              data: fahreinhet,
+              backgroundColor: "transparent",
+              borderColor: "green",
+              borderWidth: 4,
+            },
+          ],
+        },
+        options: {
+          elements: {
+            line: {
+              tension: 0,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    }
+  };
+</script>

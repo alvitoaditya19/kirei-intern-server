@@ -7,6 +7,10 @@ const os = require("os");
 
 /* GET home page. */
 router.get("/", getSuhu);
+// router.get("/suhu", getAllSuhu);
+// router.post("/", postAllSuhu);
+
+
 router.post("/", postSuhu);
 router.put("/", updateSuhu);
 
