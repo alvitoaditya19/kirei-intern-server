@@ -28,16 +28,15 @@ module.exports = {
   updateTds: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const { celcius = "", humidity = "" } = req.body;
+      const { kekeruhanAir = "" } = req.body;
 
       const payload = {};
 
-      if (celcius.length) payload.celcius = celcius;
-      if (humidity.length) payload.fahreinhet = humidity;
+      if (kekeruhanAir.length) payload.kekeruhanAir = kekeruhanAir;
 
-      const suhu = await Suhu.findOneAndUpdate(
+      const keruhAir = await KekeruhanAir.findOneAndUpdate(
         {
-          _id: "6237c861f31ee9b6d302f2f9",
+          _id: "6255747f5b79b549bf92242e",
         },
         payload,
         { new: true, runValidators: true }
@@ -45,9 +44,8 @@ module.exports = {
 
       res.status(201).json({
         data: {
-          id: suhu.id,
-          celcius: suhu.celcius,
-          humidity: suhu.humidity,
+          id: keruhAir.id,
+          kekeruhanAir: keruhAir.kekeruhanAir,
         },
       });
     } catch (err) {
