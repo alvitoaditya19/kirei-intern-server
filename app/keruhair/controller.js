@@ -3,7 +3,7 @@ const KekeruhanAir = require("./model");
 module.exports = {  
   getTds: async (req, res, next) => {
     try {
-      const keruhAir = await KekeruhanAir.find().sort({created_at: -1}).limit(5);
+      const keruhAir = await KekeruhanAir.findOne();
       res.status(200).json({ data: keruhAir });
     } catch (err) {
       res.status(500).json({ message: err.message || `Internal Server Error` });
