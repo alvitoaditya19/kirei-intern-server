@@ -1,30 +1,6 @@
 const KekeruhanAir = require("./model");
 
-module.exports = {
-  index: async (req, res) => {
-    try {
-      const alertMessage = req.flash("alertMessage");
-      const alertStatus = req.flash("alertStatus");
-
-      const alert = { message: alertMessage, status: alertStatus };
-      const suhu = await KekeruhanAir.find();
-
-      console.log("suhu ==>");
-      console.log(suhu);
-
-      res.render("admin/suhu/view_suhu", {
-        suhu,
-        alert,
-        name: req.session.user.name,
-        title: "Halaman Suhu",
-      });
-    } catch (err) {
-      req.flash("alertMessage", `${err.message}`);
-      req.flash("alertStatus", "danger");
-      res.redirect("/suhu");
-    }
-  },
-    
+module.exports = {  
   getTds: async (req, res, next) => {
     try {
       const keruhAir = await KekeruhanAir.find().sort({created_at: -1}).limit(5);

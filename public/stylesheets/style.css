@@ -13,7 +13,7 @@ body {
 
 .btn-lamp-on{
   height: 150px;
-  width:150px;
+  width:auto;
   background-color: #097EEB !important;
   border-radius: 20px;
   padding: 10px;
@@ -28,7 +28,7 @@ body {
 
 .btn-lamp-off{
   height: 150px;
-  width:150px;
+  width:auto;
   background-color: #fff !important;
   color: #097EEB !important;
   border-radius: 20px;
@@ -42,3 +42,15 @@ body {
   font-size: 18px;
   color: #097EEB !important;
 }
+
+@media (min-width: 992px) { 
+  .btn-lamp-on{
+    width:150px; 
+  }
+
+  
+  .btn-lamp-off{
+    width:150px;
+  }
+  
+ }

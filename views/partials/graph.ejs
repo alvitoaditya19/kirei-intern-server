@@ -21,14 +21,9 @@
       });
 
       var timeCelcius = data.data.map(function (elem) {
-        let newDate = new Date(elem.updatedAt);
+        let newDate = new Date(elem.createdAt);
           return newDate.toDateString();
       });
-      console.log(celcius);
-      console.log(timeCelcius);
-      console.log(fahreinhet);
-
-
       const ctx = document.getElementById("canvas").getContext("2d");
       const myChart = new Chart(ctx, {
         type: "line",

@@ -110,42 +110,66 @@
           </div>
         </div>
         <div class="container">
-          <h1>Data Suhu Celcius dan Humidity</h1>
-          <div>
-            <canvas id="canvas"></canvas>
+          <div class="col-lg-10 col-lg-12 bg-white p-lg-5 p-3 rounded-3">
+            <h4 class="text-center">Data Suhu Celcius dan Humidity</h4>
+
+            <div>
+              <canvas id="canvas"></canvas>
+            </div>
           </div>
         </div>
+        <div class="container my-lg-4 my-3">
+          <div class="col-lg-5 bg-white rounded-3 px-lg-3 pt-lg-3 pt-4">
+            <h4 class="text-center">Celcius dan Humidity</h4>
+            <div>
+              <canvas id="chartJSContainer" width="600" height="400"></canvas>
+            </div>
+          </div>
+        </div>
+
         <div>
           <h1 id="lampu1"></h1>
         </div>
         <div>
           <h1 id="lampu2"></h1>
         </div>
-        <div class="col-lg-12 mb-lg-4 justify-content-start">
+        <div class="col-lg-5 col-12 col-md-10 px-0 pb-4">
           <form
             action="/dashboard/onOfManual/62452a1b53bd72eb5a176274?_method=PUT"
             style="display: inline-block"
             method="POST"
-            >
-              <% if(onOfManual.statusKontrol === 'OFF') { %>
-                <div class="col-lg-3">
-                  <button class="btn-lamp-off btn btn-default noHover">
-                    <img src="/images/icon-lamp2.svg" alt="" height="60" width="60" class="mb-2">
-        
-                    <h1 class="title">OTOMATIS OFF</h1>
-                  </button>
-                </div>
-              <% } else if(onOfManual.statusKontrol === 'ON') { %>
-                <div class="col-lg-3">
-                  <button class="btn-lamp-on btn-default noHover">
-                    <img src="/images/icon-lamp1.svg" alt="" height="60" width="60" class="mb-2">
-                    <h1 class="title">OTOMATIS ON</h1>
-                  </button>
-                </div>
-              <% } %>
-            </form>  
+          >
+            <% if(onOfManual.statusKontrol === 'OFF') { %>
+            <div class="col-lg-3">
+              <button class="btn-lamp-off btn btn-default noHover">
+                <img
+                  src="/images/icon-lamp2.svg"
+                  alt=""
+                  height="60"
+                  width="60"
+                  class="mb-2"
+                />
+
+                <h1 class="title">OTOMATIS OFF</h1>
+              </button>
+            </div>
+            <% } else if(onOfManual.statusKontrol === 'ON') { %>
+            <div class="col-lg-3">
+              <button class="btn-lamp-on btn-default noHover">
+                <img
+                  src="/images/icon-lamp1.svg"
+                  alt=""
+                  height="60"
+                  width="60"
+                  class="mb-2"
+                />
+                <h1 class="title">OTOMATIS ON</h1>
+              </button>
+            </div>
+            <% } %>
+          </form>
         </div>
-        <div class="col-lg-5 col-12 col-md-10">
+        <div class="col-lg-5 col-12">
           <div class="row">
             <form
               action="/dashboard/lampu1/62414bbd1a431cac0b339833?_method=PUT"
@@ -154,21 +178,33 @@
               class="mb-3"
             >
               <% if(lampu.lampu1 === 'OFF') { %>
-                <div class="col-lg-3">
-                  <button class="btn-lamp-off btn btn-default noHover">
-                    <img src="/images/icon-lamp2.svg" alt="" height="60" width="60" class="mb-2">
-                    <h1 class="title">Lamp 1 OFF</h1>
-                  </button>
-                </div>
+              <div class="col-lg-3">
+                <button class="btn-lamp-off btn btn-default noHover">
+                  <img
+                    src="/images/icon-lamp2.svg"
+                    alt=""
+                    height="60"
+                    width="60"
+                    class="mb-2"
+                  />
+                  <h1 class="title">Lamp 1 OFF</h1>
+                </button>
+              </div>
               <% } else if(lampu.lampu1 === 'ON') { %>
-                <div class="col-lg-3">
-                  <button class="btn-lamp-on btn-default noHover">
-                    <img src="/images/icon-lamp1.svg" alt="" height="60" width="60" class="mb-2">
-                    <h1 class="title">Lamp 1 ON</h1>
-                  </button>
-                </div>
+              <div class="col-lg-3">
+                <button class="btn-lamp-on btn-default noHover">
+                  <img
+                    src="/images/icon-lamp1.svg"
+                    alt=""
+                    height="60"
+                    width="60"
+                    class="mb-2"
+                  />
+                  <h1 class="title">Lamp 1 ON</h1>
+                </button>
+              </div>
               <% } %>
-            </form>         
+            </form>
             <form
               action="/dashboard/lampu2/62414bbd1a431cac0b339833?_method=PUT"
               style="display: inline-block"
@@ -176,64 +212,100 @@
               class="mb-3"
             >
               <% if(lampu.lampu2 === 'OFF') { %>
-                <div class="col-lg-3">
-                  <button class="btn-lamp-off btn btn-default">
-                    <img src="/images/icon-lamp2.svg" alt="" height="60" width="60" class="mb-2">
-                    <h1 class="title">Lamp 2 OFF</h1>
-                  </button>
-                </div>
+              <div class="col-lg-3">
+                <button class="btn-lamp-off btn btn-default">
+                  <img
+                    src="/images/icon-lamp2.svg"
+                    alt=""
+                    height="60"
+                    width="60"
+                    class="mb-2"
+                  />
+                  <h1 class="title">Lamp 2 OFF</h1>
+                </button>
+              </div>
               <% } else if(lampu.lampu2 === 'ON') { %>
-                <div class="col-lg-3">
-                  <button class="btn-lamp-on btn-default">
-                    <img src="/images/icon-lamp1.svg" alt="" height="60" width="60" class="mb-2">
-                    <h1 class="title">Lamp 2 ON</h1>
-                  </button>
-                </div>
+              <div class="col-lg-3">
+                <button class="btn-lamp-on btn-default">
+                  <img
+                    src="/images/icon-lamp1.svg"
+                    alt=""
+                    height="60"
+                    width="60"
+                    class="mb-2"
+                  />
+                  <h1 class="title">Lamp 2 ON</h1>
+                </button>
+              </div>
               <% } %>
-            </form>  
+            </form>
             <form
-            action="/dashboard/pump1/62430c4028e1eef562010284?_method=PUT"
-            style="display: inline-block"
-            method="POST"
+              action="/dashboard/pump1/62430c4028e1eef562010284?_method=PUT"
+              style="display: inline-block"
+              method="POST"
             >
               <% if(pump.pump1 === 'OFF') { %>
-                <div class="col-lg-3">
-                  <button class="btn-lamp-off btn btn-default noHover">
-                    <img src="/images/icon-lamp2.svg" alt="" height="60" width="60" class="mb-2">
-        
-                    <h1 class="title">Pump 1 OFF</h1>
-                  </button>
-                </div>
+              <div class="col-lg-3">
+                <button class="btn-lamp-off btn btn-default noHover">
+                  <img
+                    src="/images/icon-lamp2.svg"
+                    alt=""
+                    height="60"
+                    width="60"
+                    class="mb-2"
+                  />
+
+                  <h1 class="title">Pump 1 OFF</h1>
+                </button>
+              </div>
               <% } else if(pump.pump1 === 'ON') { %>
-                <div class="col-lg-3">
-                  <button class="btn-lamp-on btn-default noHover">
-                    <img src="/images/icon-lamp1.svg" alt="" height="60" width="60" class="mb-2">
-                    <h1 class="title">Pump 1 ON</h1>
-                  </button>
-                </div>
+              <div class="col-lg-3">
+                <button class="btn-lamp-on btn-default noHover">
+                  <img
+                    src="/images/icon-lamp1.svg"
+                    alt=""
+                    height="60"
+                    width="60"
+                    class="mb-2"
+                  />
+                  <h1 class="title">Pump 1 ON</h1>
+                </button>
+              </div>
               <% } %>
-            </form>  
+            </form>
             <form
               action="/dashboard/pump2/62430c4028e1eef562010284?_method=PUT"
               style="display: inline-block"
               method="POST"
             >
               <% if(pump.pump2 === 'OFF') { %>
-                <div class="col-lg-3">
-                  <button class="btn-lamp-off btn btn-default noHover">
-                    <img src="/images/icon-lamp2.svg" alt="" height="60" width="60" class="mb-2">
-                    <h1 class="title">Pump 2 OFF</h1>
-                  </button>
-                </div>
+              <div class="col-lg-3">
+                <button class="btn-lamp-off btn btn-default noHover">
+                  <img
+                    src="/images/icon-lamp2.svg"
+                    alt=""
+                    height="60"
+                    width="60"
+                    class="mb-2"
+                  />
+                  <h1 class="title">Pump 2 OFF</h1>
+                </button>
+              </div>
               <% } else if(pump.pump2 === 'ON') { %>
-                <div class="col-lg-3">
-                  <button class="btn-lamp-on btn-default noHover">
-                    <img src="/images/icon-lamp1.svg" alt="" height="60" width="60" class="mb-2">
-                    <h1 class="title">Pump 2 ON</h1>
-                  </button>
-                </div>
+              <div class="col-lg-3">
+                <button class="btn-lamp-on btn-default noHover">
+                  <img
+                    src="/images/icon-lamp1.svg"
+                    alt=""
+                    height="60"
+                    width="60"
+                    class="mb-2"
+                  />
+                  <h1 class="title">Pump 2 ON</h1>
+                </button>
+              </div>
               <% } %>
-            </form> 
+            </form>
           </div>
         </div>
         <div>
@@ -312,5 +384,7 @@
   </div>
 </div>
 
-<%- include('../../partials/js.ejs') %> <%- include('../../partials/gauges.ejs')
-%><%- include('../../partials/graph.ejs') %>
+<%- include('../../partials/js.ejs') %> <%-
+include('../../partials/graph_gauge.ejs') %> <%-
+include('../../partials/gauges.ejs') %><%- include('../../partials/graph.ejs')
+%>

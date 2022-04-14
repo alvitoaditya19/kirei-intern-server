@@ -60,7 +60,7 @@ module.exports = {
       const payload = {};
 
       if (celcius.length) payload.celcius = celcius;
-      if (humidity.length) payload.fahreinhet = humidity;
+      if (humidity.length) payload.humidity = humidity;
 
       const suhu = await Suhu.findOneAndUpdate(
         {
