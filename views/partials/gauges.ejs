@@ -4,8 +4,6 @@
   setInterval(getDataKelembapanTanah, 1000);
   setInterval(getwaterlevel, 1000);
   setInterval(getkeruhAir, 1000);
-
-
   function getDataLampu() {
     $.ajax({
       type: "GET",
@@ -28,8 +26,8 @@
       },
       url: "https://kirei-iot-server.herokuapp.com/api/v1/suhu",
       success: function (data) {
-        $("#suhuCelcius").text(data.data[0].celcius);
-        $("#humidity").text(data.data[0].humidity);
+        $("#suhuCelcius").text(data.data[3].celcius);
+        $("#humidity").text(data.data[3].humidity);
       },
     });
   }
