@@ -66,8 +66,7 @@
       },
       url: "https://kirei-iot-server.herokuapp.com/api/v1/keruhair",
       success: function (dataaa) {
-        $("#kekeruhanAir").text(dataaa.data.slice(-1)[0].kekeruhanAir);
-        console.log(dataaa.data[-1].kekeruhanAir);
+        $("#kekeruhanAir").text(dataaa.data[0].kekeruhanAir);
       },
     });
   }
