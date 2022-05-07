@@ -18,7 +18,20 @@
       <div class="container-fluid">
         <%- include ../../partials/message.ejs %>
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">Welcome to Dashboard</h1>
+        <section id="content">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Welcome to Dashboard</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                <li class="breadcrumb-item active">Main</li>
+              </ol>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
         <!-- Earnings (Monthly) Card Example -->
         <div class="row">
           <div class="col-xl-3 col-md-6 mb-4">
@@ -119,10 +132,28 @@
           </div>
         </div>
         <div class="container my-lg-4 my-3">
-          <div class="col-lg-5 bg-white rounded-3 px-lg-3 pt-lg-3 pt-4">
-            <h4 class="text-center">Celcius dan Humidity</h4>
-            <div>
-              <canvas id="chartJSContainer" width="600" height="400"></canvas>
+          <div class="row">
+            <div
+              class="col-lg-5 bg-white rounded-3 px-lg-3 pt-lg-3 pt-4 mr-lg-5"
+            >
+              <h4 class="text-center">Celcius dan Humidity</h4>
+              <div>
+                <canvas
+                  id="chartJSContainer1"
+                  width="600"
+                  height="400"
+                ></canvas>
+              </div>
+            </div>
+            <div class="col-lg-5 bg-white rounded-3 px-lg-3 pt-lg-3 pt-4">
+              <h4 class="text-center">Celcius dan Humidity</h4>
+              <div>
+                <canvas
+                  id="chartJSContainer2"
+                  width="600"
+                  height="400"
+                ></canvas>
+              </div>
             </div>
           </div>
         </div>
