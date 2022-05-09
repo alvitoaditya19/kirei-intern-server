@@ -13,9 +13,7 @@ var cors = require('cors')
 const adminRouter = require("./app/admin/router");
 const dashboardRouter = require("./app/dashboard/router");
 const userRouter = require("./app/user/router");
-
-
-
+const settingRouter = require("./app/setting/router");
  
 const playerRouter = require("./app/admin/router");
 const authRouter = require("./app/auth/router");
@@ -66,6 +64,8 @@ app.use("/", adminRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/lampu", lampuRouter);
 app.use("/user", userRouter);
+app.use("/setting", settingRouter);
+
 
 
 
@@ -84,6 +84,8 @@ app.use(`${URL}/pump`, pumpRouter);
 app.use(`${URL}/water`, waterRouter);
 app.use(`${URL}/keruhair`, keruhRouter);
 app.use(`${URL}/onOfManual`, onOfControlRouter);
+// app.use(`${URL}/setting`, settingRouter);
+
 // Akhir API
 
 // catch 404 and forward to error handler

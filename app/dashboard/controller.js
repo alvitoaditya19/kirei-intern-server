@@ -5,6 +5,9 @@ const OnOfManual = require("../onOfManual/model");
 const Suhu = require("../suhu/model");
 const WaterLevel = require("../water/model");
 const TDSLevel = require("../keruhair/model");
+const Vegetable = require("../setting/model");
+const User = require("../user/model");
+
 
 
 module.exports = {
@@ -17,9 +20,10 @@ module.exports = {
       const onOfManual = await OnOfManual.findOne()  
       const waterlevel = await WaterLevel.findOne()
       const tdsLevel = await TDSLevel.find().sort({created_at: -1}).limit(1);
-
-
-
+      const vegetable1 = await Vegetable.findById("62772ed88e95ab077ed764a3");
+      const vegetable2 = await Vegetable.findById("62787d4f9f1c9d93d46815cd");
+      const user = await User.countDocuments();
+      
       const alertMessage = req.flash("alertMessage");
       const alertStatus = req.flash("alertStatus");
 
@@ -28,6 +32,11 @@ module.exports = {
       res.render("admin/dashboard/view_dashboard",{
         name : req.session.admin.name,
         title: "Halaman Dashboard",
+        count: {
+          user
+        },
+        vegetable1,
+        vegetable2,
         lampu,
         pump,
         suhu,
@@ -35,6 +44,7 @@ module.exports = {
         onOfManual,
         waterlevel,
         tdsLevel,
+        user,
         alert
       });
     } catch (err) {

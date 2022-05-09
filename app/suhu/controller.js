@@ -27,7 +27,17 @@ module.exports = {
     
   getSuhu: async (req, res, next) => {
     try {
-      const suhu = await Suhu.find().sort({created_at: -1}).limit(5);
+      const suhu = await Suhu.find().limit(5);
+    
+      suhu.sort(function(a, b) {
+        var keyA = new Date(a.updatedAt),
+          keyB = new Date(b.updatedAt);
+        // Compare the 2 dates
+        if (keyA < keyB) return -1;
+        if (keyA > keyB) return 1;
+        return 0;
+      });
+
       res.status(200).json({ data: suhu });
     } catch (err) {
       res.status(500).json({ message: err.message || `Internal Server Error` });

@@ -5,7 +5,7 @@
 ></script>
 <script>
   var xmlhttp = new XMLHttpRequest();
-  var url = "https://kirei-iot-server.herokuapp.com/api/v1/suhu";
+  var url = "http://localhost:4000/api/v1/suhu";
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
   xmlhttp.onreadystatechange = function () {
@@ -21,7 +21,7 @@
       });
 
       var timeCelcius = data.data.map(function (elem) {
-        let newDate = new Date(elem.createdAt);
+        let newDate = new Date(elem.updatedAt);
           return newDate.toDateString();
       });
       const ctx = document.getElementById("canvas").getContext("2d");
