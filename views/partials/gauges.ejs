@@ -13,8 +13,8 @@
       },
       url: "https://kirei-intern-server.herokuapp.com/api/v1/lampu/lampu",
       success: function (data) {
-        $("#lampu1").text(data.data[0].lampu1);
-        $("#lampu2").text(data.data[0].lampu2);
+        $("#lampu1").text(data.data[0].lampu1 ?? "No Data");
+        $("#lampu2").text(data.data[0].lampu2 ?? "No Data");
       },
     });
   }
@@ -25,10 +25,10 @@
       headers: {
         "Content-Type": "application/json",
       },
-      url: "https://kirei-intern-server.herokuapp.com/api/v1/suhu",
+      url: "http://localhost:4000/api/v1/suhu",
       success: function (data) {
-        $("#suhuCelcius").text(data.data[3].celcius);
-        $("#humidity").text(data.data[3].humidity);
+        $("#suhuCelcius").text(data.data[3].celcius ?? "No Data");
+        $("#humidity").text(data.data[3].humidity ?? "No Data");
         console.log(data.data.humidity)
       },
     });
@@ -42,7 +42,7 @@
       },
       url: "https://kirei-intern-server.herokuapp.com/api/v1/tanah",
       success: function (data) {
-        $("#tanah").text(data.data[0].kelembapanTanah);
+        $("#tanah").text(data.data[0].kelembapanTanah ?? "No Data");
       },
     });
   }
@@ -55,7 +55,7 @@
       },
       url: "https://kirei-intern-server.herokuapp.com/api/v1/water",
       success: function (data) {
-        $("#waterlevel").text(parseFloat(data.data[0].waterlevel).toPrecision(3));
+        $("#waterlevel").text(parseFloat(data.data[0].waterlevel ?? "No Data").toPrecision(3));
       },
     });
   }
@@ -68,7 +68,7 @@
       },
       url: "https://kirei-intern-server.herokuapp.com/api/v1/keruhair",
       success: function (dataaa) {
-        $("#kekeruhanAir").text(dataaa.data[0].kekeruhanAir);
+        $("#kekeruhanAir").text(dataaa.data[0].kekeruhanAir ?? "No Data");
       },
     });
   }

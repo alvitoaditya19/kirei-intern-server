@@ -42,7 +42,7 @@ module.exports = {
       res.status(201).json({
         data: {
           id: waterlev.id,
-          kelembapanTanah: waterlev.waterlevel,
+          waterLevel: waterlev.waterlevel,
         }
       })
     } catch (err) {

@@ -11,4 +11,3 @@ router.put("/", multer({ dest: os.tmpdir() }).single("image"), updateData);
 
 
 module.exports = router;
- 
