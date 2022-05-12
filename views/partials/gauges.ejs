@@ -27,8 +27,8 @@
       },
       url: "https://kirei-intern-server.herokuapp.com/api/v1/suhu",
       success: function (data) {
-        $("#suhuCelcius").text(data.data[3].celcius ?? "No Data");
-        $("#humidity").text(data.data[3].humidity ?? "No Data");
+        $("#suhuCelcius").text(data.data[0].celcius ?? "No Data");
+        $("#humidity").text(data.data[0].humidity ?? "No Data");
         console.log(data.data.humidity)
       },
     });
