@@ -25,10 +25,10 @@
       headers: {
         "Content-Type": "application/json",
       },
-      url: "https://kirei-intern-server.herokuapp.com/api/v1/suhu",
+      url: "https://kirei-intern-server.herokuapp.com/api/v1/suhu/get",
       success: function (dataItem) {
-        $("#suhuCelcius").text(dataItem.data[data.length - 1].celcius ?? "No Data");
-        $("#humidity").text(dataItem.data[data.length - 1].humidity ?? "No Data");
+        $("#suhuCelcius").text(dataItem.data.slice(-1)[0].celcius ?? "No Data");
+        $("#humidity").text(dataItem.data.slice(-1)[0].humidity ?? "No Data");
         // console.log(data.data.humidity)
       },
     });
@@ -40,9 +40,9 @@
       headers: {
         "Content-Type": "application/json",
       },
-      url: "https://kirei-intern-server.herokuapp.com/api/v1/tanah",
+      url: "https://kirei-intern-server.herokuapp.com/api/v1/tanah/get",
       success: function (dataItem) {
-        $("#tanah").text(dataItem.data[data.length - 1].kelembapanTanah ?? "No Data");
+        $("#tanah").text(dataItem.data.slice(-1)[0].kelembapanTanah ?? "No Data");
       },
     });
   }
@@ -53,9 +53,9 @@
       headers: {
         "Content-Type": "application/json",
       },
-      url: "https://kirei-intern-server.herokuapp.com/api/v1/water",
+      url: "https://kirei-intern-server.herokuapp.com/api/v1/water/get",
       success: function (dataItem) {
-        $("#waterlevel").text(parseFloat(dataItem.data[data.length - 1].waterlevel ?? "No Data").toPrecision(3));
+        $("#waterlevel").text(parseFloat(dataItem.data.slice(-1)[0].waterlevel ?? "No Data").toPrecision(3));
       },
     });
   }
@@ -66,9 +66,9 @@
       headers: {
         "Content-Type": "application/json",
       },
-      url: "https://kirei-intern-server.herokuapp.com/api/v1/keruhair",
+      url: "https://kirei-intern-server.herokuapp.com/api/v1/keruhair/get",
       success: function (dataItem) {
-        $("#kekeruhanAir").text(dataItem.data[data.length - 1].kekeruhanAir ?? "No Data");
+        $("#kekeruhanAir").text(dataItem.data.slice(-1)[0].kekeruhanAir ?? "No Data");
       },
     });
   }

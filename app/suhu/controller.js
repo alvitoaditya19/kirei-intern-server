@@ -54,11 +54,11 @@ module.exports = {
   },
   postSuhu: async (req, res, next) => {
     try {
-      const { celcius, fahreinhet } = req.body;
+      const { celcius, humidity } = req.body;
 
       const payload = {
         celcius: celcius,
-        fahreinhet: fahreinhet,
+        humidity: humidity,
       };
 
       const suhu = new Suhu(payload);
