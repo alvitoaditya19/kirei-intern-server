@@ -9,14 +9,11 @@ module.exports = {
       const alert = { message: alertMessage, status: alertStatus };
       const suhu = await Suhu.find();
 
-      console.log("suhu ==>");
-      console.log(suhu);
-
       res.render("admin/suhu/view_suhu", {
-        suhu,
         alert,
-        name: req.session.user.name,
-        title: "Halaman Suhu",
+        suhu,
+        name: req.session.admin.name,
+        title: "Halaman User",
       });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
@@ -27,8 +24,10 @@ module.exports = {
     
   getSuhu: async (req, res, next) => {
     try {
-      const suhu = await Suhu.find().limit(5);
-    
+      // const suhu = await Suhu.find();
+      const suhu = await Suhu.find();
+      
+      //  AWAL TO AKHIR
       suhu.sort(function(a, b) {
         var keyA = new Date(a.updatedAt),
           keyB = new Date(b.updatedAt);
@@ -37,6 +36,16 @@ module.exports = {
         if (keyA > keyB) return 1;
         return 0;
       });
+
+      // AKHIR TO AWAL
+      // suhu.sort(function(a, b) {
+      //   var keyA = new Date(a.updatedAt),
+      //     keyB = new Date(b.updatedAt);
+      //   // Compare the 2 dates
+      //   if (keyA < keyB) return 1;
+      //   if (keyA > keyB) return -1;
+      //   return 0;
+      // });
 
       res.status(200).json({ data: suhu });
     } catch (err) {
@@ -53,8 +62,6 @@ module.exports = {
       };
 
       const suhu = new Suhu(payload);
-      console.log("res_payment ==>");
-      console.log(payload);
       await suhu.save();
 
       res.status(200).json({ data: suhu });

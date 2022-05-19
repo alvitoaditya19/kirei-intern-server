@@ -1,6 +1,26 @@
 const WaterLevel = require("./model");
 
 module.exports = {
+  index: async (req, res) => {
+    try {
+      const alertMessage = req.flash("alertMessage");
+      const alertStatus = req.flash("alertStatus");
+
+      const alert = { message: alertMessage, status: alertStatus };
+      const waterLevel = await WaterLevel.find();
+
+      res.render("admin/water_level/view_water_level", {
+        alert,
+        waterLevel,
+        name: req.session.admin.name,
+        title: "Halaman Water Level",
+      });
+    } catch (err) {
+      req.flash("alertMessage", `${err.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/suhu");
+    }
+  },
   postData: async (req, res, next) => {
     try {
       const { waterlevel } = req.body;

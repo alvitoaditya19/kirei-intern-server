@@ -110,6 +110,8 @@ body {
   border-radius:10px
 }
 
+
+
 @media (min-width: 992px) {
   .monitoring .card-title {
     font-size: 18px;

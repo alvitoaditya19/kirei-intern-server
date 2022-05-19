@@ -1,9 +1,46 @@
 const KekeruhanAir = require("./model");
 
-module.exports = {  
+module.exports = {
+  index: async (req, res) => {
+    try {
+      const alertMessage = req.flash("alertMessage");
+      const alertStatus = req.flash("alertStatus");
+
+      const alert = { message: alertMessage, status: alertStatus };
+      const keruhAir = await KekeruhanAir.find();
+
+      keruhAir.sort(function(a, b) {
+        var keyA = new Date(a.updatedAt),
+          keyB = new Date(b.updatedAt);
+        // Compare the 2 dates
+        if (keyA < keyB) return -1;
+        if (keyA > keyB) return 1;
+        return 0;
+      });
+
+      res.render("admin/keruhAir/view_keruhair", {
+        alert,
+        keruhAir,
+        name: req.session.admin.name,
+        title: "Halaman User",
+      });
+    } catch (err) {
+      req.flash("alertMessage", `${err.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/suhu");
+    }
+  },
   getTds: async (req, res, next) => {
     try {
       const keruhAir = await KekeruhanAir.find();
+      keruhAir.sort(function(a, b) {
+        var keyA = new Date(a.updatedAt),
+          keyB = new Date(b.updatedAt);
+        // Compare the 2 dates
+        if (keyA < keyB) return -1;
+        if (keyA > keyB) return 1;
+        return 0;
+      });
       res.status(200).json({ data: keruhAir });
     } catch (err) {
       res.status(500).json({ message: err.message || `Internal Server Error` });

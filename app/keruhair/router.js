@@ -5,14 +5,15 @@ const { isLoginPlayer } = require('../middleware/auth');
 const multer = require("multer");
 const os = require("os");
 
-/* GET home page. */
-router.get("/", getTds);
+// PAGES
+router.get("/", index);
 // router.get("/suhu", getAllSuhu);
 // router.post("/", postAllSuhu);
 
-
-router.post("/", postTds);
-router.put("/", updateTds);
+// API
+router.get("/get", getTds);
+router.post("/post", postTds);
+router.put("/put", updateTds);
 
 module.exports = router;
  

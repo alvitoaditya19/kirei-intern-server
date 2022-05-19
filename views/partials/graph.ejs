@@ -5,25 +5,26 @@
 ></script>
 <script>
   var xmlhttp = new XMLHttpRequest();
-  var url = "https://kirei-intern-server.herokuapp.com/api/v1/suhu";
+  var url = "http://localhost:4000/api/v1/suhu/get";
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var data = JSON.parse(this.responseText);
 
-      var celcius = data.data.map(function (elem) {
+      var celcius = data.data.slice(-5, data.length).map(function (elem) {
           return elem.celcius;
       });
 
-      var fahreinhet = data.data.map(function (elem) {
-        return elem.fahreinhet;
+
+      var humidity = data.data.slice(-5, data.length).map(function (elem) {
+        return elem.humidity;
       });
 
-      var timeCelcius = data.data.map(function (elem) {
+      var timeCelcius = data.data.slice(-5, data.length).map(function (elem) {
         let newDate = new Date(elem.updatedAt);
-          return newDate.toDateString();
-      });
+          return `${newDate.getFullYear()}-${(newDate.getMonth()+ 1).toString().padStart(2, "0")}-${newDate.getDate().toString().padStart(2, "0")}`;
+      })
       const ctx = document.getElementById("canvas").getContext("2d");
       const myChart = new Chart(ctx, {
         type: "line",
@@ -39,7 +40,7 @@
             },
             {
               label: "Humidity",
-              data: fahreinhet,
+              data: humidity,
               backgroundColor: "transparent",
               borderColor: "green",
               borderWidth: 4,

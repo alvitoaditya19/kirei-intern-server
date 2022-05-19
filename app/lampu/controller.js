@@ -11,8 +11,6 @@ module.exports = {
       };
 
       const lampu = new Lampu(payload);
-      console.log("res_payment ==>");
-      console.log(payload);
       await lampu.save();
 
       res.status(200).json({ data: lampu });

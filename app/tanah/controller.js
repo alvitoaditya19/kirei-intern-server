@@ -1,7 +1,27 @@
 const KelembapanTanah = require("./model");
 
 module.exports = {
-  index: async (req, res, next) => {
+  index: async (req, res) => {
+    try {
+      const alertMessage = req.flash("alertMessage");
+      const alertStatus = req.flash("alertStatus");
+
+      const alert = { message: alertMessage, status: alertStatus };
+      const kelembapanTanah = await KelembapanTanah.find();
+
+      res.render("admin/tanah/view_tanah", {
+        alert,
+        kelembapanTanah,
+        name: req.session.admin.name,
+        title: "Halaman User",
+      });
+    } catch (err) {
+      req.flash("alertMessage", `${err.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/tanah");
+    }
+  },
+  postData: async (req, res, next) => {
     try {
       const { kelembapanTanah } = req.body;
 

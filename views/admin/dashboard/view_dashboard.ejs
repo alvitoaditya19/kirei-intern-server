@@ -467,6 +467,17 @@
             <h1 class="title-monitoring">Grafik Data Realtime</h1>
           </div>
         </div>
+        <div class="container-fluid pb-lg-4 pb-3">
+          <div class="col-lg-12 bg-white p-lg-5 p-3 card-graph">
+            <div class="chartCard">
+              <div class="chartBox">
+                <canvas id="myChart"></canvas>
+                <input onchange="filterData()" type="date" id="startdate" value="2022-03-30">
+                <input onchange="filterData()" type="date" id="enddate" value="2022-04-07">
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="container-fluid">
           <div class="col-lg-12 bg-white p-lg-5 p-3 card-graph">
             <h4 class="text-center">Data Suhu Celcius dan Humidity</h4>
@@ -475,7 +486,7 @@
             </div>
           </div>
         </div>
-        <div class="container my-lg-4 my-3">
+        <!-- <div class="container my-lg-4 my-3">
           <div class="row">
             <div
               class="col-lg-5 bg-white rounded-3 px-lg-3 pt-lg-3 pt-4 mr-lg-5"
@@ -500,7 +511,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div id="myDiv">
           <!-- Plotly chart will be drawn inside this DIV -->
         </div>
@@ -556,6 +567,7 @@
     </div>
   </div>
 </div>
+<%- include('../../partials/graph2.ejs') %>
 
 <%- include('../../partials/js.ejs') %> <%-
 include('../../partials/graph_gauge.ejs') %> <%-

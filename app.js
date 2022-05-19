@@ -26,9 +26,6 @@ const waterRouter = require("./app/water/router");
 const keruhRouter = require("./app/keruhair/router");
 const onOfControlRouter = require("./app/onOfManual/router");
 
-
-
-
 const app = express();
 const URL = `/api/v1`;
 app.use(cors())
@@ -65,11 +62,10 @@ app.use("/dashboard", dashboardRouter);
 app.use("/lampu", lampuRouter);
 app.use("/user", userRouter);
 app.use("/setting", settingRouter);
-
-
-
-
-
+app.use("/suhu", suhuRouter);
+app.use("/water", waterRouter);
+app.use("/tanah", tanahRouter);
+app.use("/keruhair", keruhRouter);
 
 // app.use("/dashboard", dashboardRouter);
 

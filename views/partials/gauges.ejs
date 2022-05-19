@@ -29,7 +29,7 @@
       success: function (data) {
         $("#suhuCelcius").text(data.data[0].celcius ?? "No Data");
         $("#humidity").text(data.data[0].humidity ?? "No Data");
-        console.log(data.data.humidity)
+        // console.log(data.data.humidity)
       },
     });
   }

@@ -20,8 +20,6 @@ module.exports = {
       };
 
       const pump = new Pump(payload);
-      console.log("res_payment ==>");
-      console.log(payload);
       await pump.save();
 
       res.status(200).json({ data: pump });
