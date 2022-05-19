@@ -12,9 +12,9 @@
         "Content-Type": "application/json",
       },
       url: "https://kirei-intern-server.herokuapp.com/api/v1/lampu/lampu",
-      success: function (data) {
-        $("#lampu1").text(data.data[0].lampu1 ?? "No Data");
-        $("#lampu2").text(data.data[0].lampu2 ?? "No Data");
+      success: function (dataItem) {
+        $("#lampu1").text(dataItem.data[0].lampu1 ?? "No Data");
+        $("#lampu2").text(dataItem.data[0].lampu2 ?? "No Data");
       },
     });
   }
@@ -26,9 +26,9 @@
         "Content-Type": "application/json",
       },
       url: "https://kirei-intern-server.herokuapp.com/api/v1/suhu",
-      success: function (data) {
-        $("#suhuCelcius").text(data.data[0].celcius ?? "No Data");
-        $("#humidity").text(data.data[0].humidity ?? "No Data");
+      success: function (dataItem) {
+        $("#suhuCelcius").text(dataItem.data[data.length - 1].celcius ?? "No Data");
+        $("#humidity").text(dataItem.data[data.length - 1].humidity ?? "No Data");
         // console.log(data.data.humidity)
       },
     });
@@ -41,8 +41,8 @@
         "Content-Type": "application/json",
       },
       url: "https://kirei-intern-server.herokuapp.com/api/v1/tanah",
-      success: function (data) {
-        $("#tanah").text(data.data[0].kelembapanTanah ?? "No Data");
+      success: function (dataItem) {
+        $("#tanah").text(dataItem.data[data.length - 1].kelembapanTanah ?? "No Data");
       },
     });
   }
@@ -54,8 +54,8 @@
         "Content-Type": "application/json",
       },
       url: "https://kirei-intern-server.herokuapp.com/api/v1/water",
-      success: function (data) {
-        $("#waterlevel").text(parseFloat(data.data[0].waterlevel ?? "No Data").toPrecision(3));
+      success: function (dataItem) {
+        $("#waterlevel").text(parseFloat(dataItem.data[data.length - 1].waterlevel ?? "No Data").toPrecision(3));
       },
     });
   }
@@ -67,8 +67,8 @@
         "Content-Type": "application/json",
       },
       url: "https://kirei-intern-server.herokuapp.com/api/v1/keruhair",
-      success: function (dataaa) {
-        $("#kekeruhanAir").text(dataaa.data[0].kekeruhanAir ?? "No Data");
+      success: function (dataItem) {
+        $("#kekeruhanAir").text(dataItem.data[data.length - 1].kekeruhanAir ?? "No Data");
       },
     });
   }
