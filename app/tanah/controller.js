@@ -29,7 +29,7 @@ module.exports = {
         kelembapanTanah: kelembapanTanah,
       };
 
-      const kelentan = new Cuaca(payload);
+      const kelentan = new KelembapanTanah(payload);
       await kelentan.save();
 
       res.status(200).json({ data: kelentan });
