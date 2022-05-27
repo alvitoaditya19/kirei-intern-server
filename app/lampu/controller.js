@@ -36,7 +36,7 @@ module.exports = {
       req.flash("alertStatus", "success");
 
       res.redirect("/lampu");
-    } catch (error) {
+    } catch (err) {
       req.flash("alertMessage", `${err.message}`);
       req.flash("alertStatus", "danger");
       res.redirect("/lampu");
@@ -78,6 +78,7 @@ module.exports = {
 
   updateLampu: async (req, res, next) => {
     try {
+      const {id} = req.params
       const { lampu1 = "", lampu2 = "" } = req.body;
 
       const payload = {};
@@ -87,7 +88,7 @@ module.exports = {
 
       const lampu = await Lampu.findOneAndUpdate(
         {
-          _id: "623917f9d0b8019f7e953523",
+          _id: id,
         },
         payload,
         { new: true, runValidators: true }

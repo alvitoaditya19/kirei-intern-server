@@ -1,23 +1,23 @@
 <script>
-  setInterval(getDataLampu, 1000);
+  // setInterval(getDataLampu, 1000);
   setInterval(getDataSuhu, 1000);
   setInterval(getDataKelembapanTanah, 1000);
   setInterval(getwaterlevel, 1000);
   setInterval(getkeruhAir, 1000);
 
-  function getDataLampu() {
-    $.ajax({
-      type: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      url: "https://kirei-intern-server.herokuapp.com/api/v1/lampu/lampu",
-      success: function (dataItem) {
-        $("#lampu1").text(dataItem.data[0].lampu1 ?? "No Data");
-        $("#lampu2").text(dataItem.data[0].lampu2 ?? "No Data");
-      },
-    });
-  }
+  // function getDataLampu() {
+  //   $.ajax({
+  //     type: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     url: "https://kirei-intern-server.herokuapp.com/api/v1/lampu/lampu",
+  //     success: function (dataItem) {
+  //       $("#lampu1").text(dataItem.data[0].lampu1 ?? "No Data");
+  //       $("#lampu2").text(dataItem.data[0].lampu2 ?? "No Data");
+  //     },
+  //   });
+  // }
 
   function getDataSuhu() {
     $.ajax({

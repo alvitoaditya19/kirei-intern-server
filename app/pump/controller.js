@@ -28,18 +28,19 @@ module.exports = {
     }
   },
 
-  updateLampu: async (req, res, next) => {
+  updatePump: async (req, res, next) => {
     try {
-      const { lampu1 = "", lampu2 = "" } = req.body;
+      const {id} = req.params
+      const { pump1 = "", pump2 = "" } = req.body;
 
       const payload = {};
 
-      if (lampu1.length) payload.lampu1 = lampu1;
-      if (lampu2.length) payload.lampu2 = lampu2;
+      if (pump1.length) payload.pump1 = pump1;
+      if (pump2.length) payload.pump2 = pump2;
 
-      const lampu = await Lampu.findOneAndUpdate(
+      const pump = await Pump.findOneAndUpdate(
         {
-          _id: "623917f9d0b8019f7e953523",
+          _id: id,
         },
         payload,
         { new: true, runValidators: true }
@@ -47,9 +48,9 @@ module.exports = {
 
       res.status(201).json({
         data: {
-          id: lampu.id,
-          lampu1: lampu.lampu1,
-          lampu2: lampu.lampu2,
+          id: pump.id,
+          pump1: pump.pump1,
+          pump2: pump.pump2,
         },
       });
     } catch (err) {

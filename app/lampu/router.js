@@ -6,7 +6,7 @@ const os = require("os");
 
 router.get("/", lampu);
 
-router.put("/",multer({ dest: os.tmpdir() }).single("image"), updateLampu);
+router.put("/:id", updateLampu);
 router.put("/lampu1/:id", actionStatusLampu1);
 router.put("/lampu2/:id", actionStatusLampu2);
 router.post("/post",  multer({ dest: os.tmpdir() }).single("image"), actionCreate);

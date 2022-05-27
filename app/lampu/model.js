@@ -4,12 +4,12 @@ const mongoose = require("mongoose");
 const lampuSchema = mongoose.Schema({
   lampu1: {
     type: String,
-    enum: ["ON", "OFF"],
+    // enum: ["ON", "OFF"],
     default: "ON",
   },
   lampu2: {
     type: String,
-    enum: ["ON", "OFF"],
+    // enum: ["ON", "OFF"],
     default: "ON",
   },
   status: {

@@ -1,7 +1,12 @@
 body {
   font: 14px "Poppins", Helvetica, Arial, sans-serif;
 }
-
+.blue {
+  color: blue;
+}
+.highlight {
+  background: yellow;
+}
 .title-dashboard {
   font-weight: 600;
   font-size: 28px;
@@ -88,10 +93,115 @@ body {
   color: #ffff !important;
 }
 
+.btn-lamp-on-lampu1 {
+  max-height: 150px;
+  background-color: #097eeb !important;
+  border-radius: 20px;
+  padding: 10px;
+  margin:0px 6px;
+  padding:20px 20px;
+}
+
+.btn-lamp-on-lampu1 h1 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #ffff !important;
+}
+
+.btn-lamp-off-lampu1 {
+  max-height: 150px;
+  background-color: #fff ;
+  color: #097eeb;
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 18px;
+  margin:0px 6px;
+  padding:20px 20px;
+}
+
+.btn-lamp-off-lampu1 h1 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #097eeb;
+}
+
+.btn-lamp-off-lampu2 {
+  max-height: 150px;
+  background-color: #fff ;
+  color: #097eeb;
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 18px;
+  margin:0px 6px;
+  padding:20px 20px;
+}
+
+.btn-lamp-off-lampu2 h1 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #097eeb;
+}
+
+.btn-lamp-off-pump1 {
+  max-height: 150px;
+  background-color: #fff ;
+  color: #097eeb;
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 18px;
+  margin:0px 6px;
+  padding:20px 20px;
+}
+
+.btn-lamp-off-pump1 h1 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #097eeb;
+}
+
+.btn-lamp-off-pump2 {
+  max-height: 150px;
+  background-color: #fff ;
+  color: #097eeb;
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 18px;
+  margin:0px 6px;
+  padding:20px 20px;
+}
+
+.btn-lamp-off-pump2 h1 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #097eeb;
+}
+
+.btn-lamp-off-status {
+  max-height: 150px;
+  background-color: #fff ;
+  color: #097eeb;
+  border-radius: 20px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 18px;
+  margin:0px 6px;
+  padding:20px 20px;
+}
+
+.btn-lamp-off-status h1 {
+  font-weight: 500;
+  font-size: 18px;
+  color: #097eeb;
+}
+
 .btn-lamp-off {
   max-height: 150px;
-  background-color: #fff !important;
-  color: #097eeb !important;
+  background-color: #fff ;
+  color: #097eeb;
   border-radius: 20px;
   padding: 10px;
   font-weight: 500;
@@ -103,8 +213,9 @@ body {
 .btn-lamp-off h1 {
   font-weight: 500;
   font-size: 18px;
-  color: #097eeb !important;
+  color: #097eeb;
 }
+
 
 .card-graph{
   border-radius:10px

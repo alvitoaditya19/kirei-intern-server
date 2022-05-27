@@ -33,37 +33,30 @@
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                <div class="row align-items-center text-center">
-                  <img
-                    src="/images/ic-profile.svg"
-                    alt=""
-                    class="image-profile"
-                  />
-                  <h1 class="user-name"><%= name %></h1>
-                </div>
+                  <div class="row align-items-center text-center">
+                    <img
+                      src="/images/ic-profile.svg"
+                      alt=""
+                      class="image-profile"
+                    />
+                    <h1 class="user-name"><%= name %></h1>
+                  </div>
                   <ul
                     class="dropdown-menu"
                     aria-labelledby="dropdownMenuLink"
                     style="right: 0; left: auto"
                   >
                     <li>
-                      <a href="/setting" class="dropdown-item"
-                        >My Profile</a
-                      >
-                    </li>         
+                      <a href="/setting" class="dropdown-item">My Profile</a>
+                    </li>
                     <li>
-                      <a
-                        href="/logout"
-                        class="dropdown-item"
-                        onclick=""
+                      <a href="/logout" class="dropdown-item" onclick=""
                         >Sign Out</a
                       >
-                    
                     </li>
                   </ul>
                 </a>
               </div>
-
             </div>
           </div>
           <!-- /.container-fluid -->
@@ -271,22 +264,7 @@
           </div>
           <div class="col-lg-6">
             <h1 class="title-monitoring">Control Feature</h1>
-            <!-- <div class="row">
-              <div class="col-6">
-                <div
-                  class="card btn-lamp-off btn noHover align-items-center"
-                >
-                  <img
-                    src="/images/icon-lamp2.svg"
-                    alt=""
-                    height="60"
-                    width="60"
-                    class="mb-2"
-                  />
-                  <h1 class="title">Lamp 1 OFF</h1>
-                </div>
-              </div>
-            </div> -->
+            <!-- FORM REQUEST -->
             <div class="row mb-lg-3 mb-4">
               <form
                 action="/dashboard/onOfManual/62452a1b53bd72eb5a176274?_method=PUT"
@@ -459,7 +437,83 @@
 
                 <% } %>
               </form>
+              <!-- AJAX -->
+              <!-- action="/dashboard/pump1/62430c4028e1eef562010284?_method=PUT" -->
             </div>
+            <!-- AKHIR FORM REQUEST -->
+            <div class="mt-lg-3 mt-2">
+              <h1 class="title-monitoring">Control Feature Ajax</h1>
+            </div>
+
+            <!-- AJAX -->
+            <div class="mt-lg-3 mt-2">
+              <div class="row">
+                <button class="btn-lamp-off-status btn" id="buttononoff">
+                  <img
+                    src="/images/icon-lamp2.svg"
+                    alt=""
+                    height="60"
+                    width="60"
+                    class="mb-2"
+                    id="imgstatus"
+                  />
+                  <h1 class="title" id="titlestatus">Press IT<br>OTOMATIS</h1>
+                </button>
+              </div>
+            </div>
+            <div class="row mt-lg-3 mt-2">
+              <button class="btn-lamp-off-lampu1 btn" id="buttonlampu1">
+                <img
+                  src="/images/icon-lamp2.svg"
+                  alt=""
+                  height="60"
+                  width="60"
+                  class="mb-2"
+                  id="imgLampu1"
+                />
+                <h1 class="title" id="titleLampu1">Press IT<br>LAMPU 1</h1>
+              </button>
+
+              <button class="btn-lamp-off-lampu2 btn lampu2" id="buttonlampu2">
+                <img
+                  src="/images/icon-lamp2.svg"
+                  alt=""
+                  height="60"
+                  width="60"
+                  class="mb-2"
+                  id="imgLampu2"
+                />
+                <h1 class="title" id="titleLampu2">Press IT<br>Lampu 2</h1> 
+                <!-- Lampu 2 OFF -->
+              </button>
+
+              <button class="btn-lamp-off-pump1 btn" id="buttonpump1">
+                <img
+                  src="/images/icon-lamp2.svg"
+                  alt=""
+                  height="60"
+                  width="60"
+                  class="mb-2"
+                  id="imgPump1"
+                />
+                <h1 class="title" id="titlePump1">Press IT<br>Pump 1</h1> 
+              </button>
+
+              <button class="btn-lamp-off-pump2 btn" id="buttonpump2">
+                <img
+                  src="/images/icon-lamp2.svg"
+                  alt=""
+                  height="60"
+                  width="60"
+                  class="mb-2"
+                  id="imgPump2"
+                />
+                <h1 class="title" id="titlePump2">Press IT<br>Pump 2</h1> 
+                <!-- Lampu 2 OFF -->
+              </button>
+            </div>
+
+            <!-- AKHIR AJAX -->
           </div>
         </div>
         <div class="row mt-lg-4 mt-3">
@@ -472,8 +526,18 @@
             <div class="chartCard">
               <div class="chartBox">
                 <canvas id="myChart"></canvas>
-                <input onchange="filterData()" type="date" id="startdate" value="2022-03-30">
-                <input onchange="filterData()" type="date" id="enddate" value="2022-04-07">
+                <input
+                  onchange="filterData()"
+                  type="date"
+                  id="startdate"
+                  value="2022-03-30"
+                />
+                <input
+                  onchange="filterData()"
+                  type="date"
+                  id="enddate"
+                  value="2022-04-07"
+                />
               </div>
             </div>
           </div>
@@ -567,9 +631,9 @@
     </div>
   </div>
 </div>
-<%- include('../../partials/graph2.ejs') %>
-
-<%- include('../../partials/js.ejs') %> <%-
-include('../../partials/graph_gauge.ejs') %> <%-
-include('../../partials/gauges.ejs') %><%- include('../../partials/graph.ejs')
-%>
+<%- include('../../partials/button_control.ejs') %>
+<%- include('../../partials/graph2.ejs') %> 
+<%- include('../../partials/js.ejs') %> 
+<%- include('../../partials/graph_gauge.ejs') %> 
+<%- include('../../partials/gauges.ejs') %>
+<%- include('../../partials/graph.ejs') %>

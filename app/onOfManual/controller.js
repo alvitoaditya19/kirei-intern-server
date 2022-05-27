@@ -27,4 +27,30 @@ module.exports = {
       res.status(500).json({message: err.message || `Internal Server Error`});
     }
   },
+  updateOtomatis: async (req, res, next) => {
+    try {
+      const {id} = req.params
+      const { statusKontrol = "" } = req.body;
+
+      const payload = {};
+
+      if (statusKontrol.length) payload.statusKontrol = statusKontrol;
+
+      const status = await OnOfManual.findOneAndUpdate(
+        {
+          _id: id,
+        },
+        payload,
+        { new: true, runValidators: true }
+      );
+      res.status(201).json({
+        data: {
+          id: status.id,
+          statusKontrol: status.statusKontrol
+        },
+      });
+    } catch (err) {
+      res.status(500).json({ message: err.message || `Internal Server Error` });
+    }
+  },
 };
